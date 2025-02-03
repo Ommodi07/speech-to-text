@@ -3,67 +3,135 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden; /* Prevent scrolling during animation */
+}
+
+/* Fade-in animation for the container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .App {
   text-align: center;
-  background-color: white;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   width: 100%;
+  animation: fadeIn 1s ease-out; /* Apply the fade-in animation */
 }
 
 /* Style for buttons */
 button {
   margin: 10px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 16px;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #007bff;
   color: white;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: #0056b3;
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+button:active {
+  transform: scale(0.95); /* Slight shrink effect on click */
 }
 
 /* Style for the language dropdown */
 select {
-  padding: 8px;
+  padding: 10px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
 /* Style for headings */
 h1 {
-  color: #333;
+  color: #fdfdfd;
   margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 h2 {
   color: #555;
   margin-top: 20px;
+  font-size: 1.5rem;
 }
 
 /* Style for the transcript box */
 p {
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 5px;
+  padding: 20px;
+  border-radius: 10px;
   border: 1px solid #ddd;
   margin: 20px auto;
   max-width: 100%;
   word-wrap: break-word;
-  color: #000;
+  font-size: 1.2rem;
+  color: #ffffff;
+  transition: box-shadow 0.3s ease;
+}
+
+p:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Background animation */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  background-size: 400% 400%;
+  animation: gradientBackground 10s ease infinite;
+}
+.loader {
+  font-size: 1.5rem;
+  color: #007bff;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
