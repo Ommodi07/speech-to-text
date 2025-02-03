@@ -5,18 +5,22 @@ const SpeechToText = () => {
   const [language, setLanguage] = useState("en-IN"); // Default language: English (India)
   const { transcript, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 
+  // Check if the browser supports speech recognition
   if (!browserSupportsSpeechRecognition) {
     return <div>Your browser does not support speech recognition.</div>;
   }
 
+  // Start listening
   const startListening = () => {
     SpeechRecognition.startListening({ language });
   };
 
+  // Stop listening
   const stopListening = () => {
     SpeechRecognition.stopListening();
   };
 
+  // Handle language change
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
   };
