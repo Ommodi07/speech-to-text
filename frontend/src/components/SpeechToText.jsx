@@ -26,7 +26,7 @@ const SpeechToText = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Speech to Text Conversion</h1>
       <div>
         <label>Select Language: </label>
